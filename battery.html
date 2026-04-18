@@ -1,15 +1,27 @@
-<div class="card">
-  <div class="card-content">
-    <span class="card-title">
-      Battery <span id="level"></span>
-    </span>
-     <div id="result">
-         <label> Level
-            <progress class="progress blue col s6"  id="batbar" max="1"></progress>
-          </level>
-          <br>
-          Status: <span id="state"></span>
-     </div>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Battery Status</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+
+<div class="container" style="margin-top: 50px;">
+  <div class="card">
+    <div class="card-content">
+      <span class="card-title">
+        Battery <span id="level"></span>
+      </span>
+       <div id="result">
+           <label> Level
+              <progress class="progress blue col s6" id="batbar" max="1"></progress>
+            </label>
+            <br>
+            Status: <span id="state"></span>
+       </div>
+    </div>
   </div>
 </div>
 
@@ -17,11 +29,15 @@
   async function main(){
     let battery = await navigator.getBattery();
     let batbar = document.querySelector('#batbar');
+    
     batbar.value = battery.level; 
     document.querySelector('#level').innerHTML = (battery.level * 100)+'%';
     document.querySelector('#state').innerHTML = battery.charging ? "Charging" : "Not Charging";
   }
 
   main();
-
 </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>
